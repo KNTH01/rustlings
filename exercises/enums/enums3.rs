@@ -21,7 +21,7 @@ struct State {
     color: (u8, u8, u8),
     position: Point,
     quit: bool,
-    message: String
+    message: String,
 }
 
 impl State {
@@ -33,26 +33,21 @@ impl State {
         self.quit = true;
     }
 
-    fn echo(&mut self, s: String) { self.message = s }
+    fn echo(&mut self, s: String) {
+        self.message = s
+    }
 
     fn move_position(&mut self, p: Point) {
         self.position = p;
     }
 
     fn process(&mut self, message: Message) {
-<<<<<<< HEAD
-        // TODO: create a match expression to process the different message
-        // variants
-        // Remember: When passing a tuple as a function argument, you'll need
-        // extra parentheses: fn function((t, u, p, l, e))
-=======
         match message {
             Message::ChangeColor(r, g, b) => self.color = (r, g, b),
             Message::Move(point) => self.position = point,
             Message::Echo(msg) => self.echo(msg),
             Message::Quit => self.quit(),
         }
->>>>>>> 0580611
     }
 }
 
